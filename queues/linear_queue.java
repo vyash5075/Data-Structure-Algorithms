@@ -70,6 +70,7 @@ public class linear_queue {
         q.enqueue(12);
         q.dequeue();
         q.enqueue(2);
+
    }
 }
 	
