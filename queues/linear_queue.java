@@ -63,12 +63,13 @@ public class linear_queue {
    public static void main(String args[])
    {
     linear_queue q=new linear_queue(5);
-    q.enqueue(4);
-     q.enqueue(6);
-      q.enqueue(8);
-       q.enqueue(10);
+    	q.enqueue(4);
+     	q.enqueue(6);
+      	q.enqueue(8);
+        q.enqueue(10);
         q.enqueue(12);
         q.dequeue();
-         q.enqueue(2);
+        q.enqueue(2);
    }
 }
+	
