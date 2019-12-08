@@ -1,5 +1,5 @@
 import java.util.*;
-public class mirrori_image {
+public class mirror_image {
     static class node{
         int data;
         node left;
@@ -11,7 +11,7 @@ public class mirrori_image {
         }
     }
     static node root;
-    mirrori_image()
+    mirror_image()
     {
         root=null;
     }
@@ -40,7 +40,7 @@ public class mirrori_image {
     }
     public static void main(String  args[])
     {
-         mirrori_image m=new  mirrori_image();
+         mirror_image m=new  mirror_image();
          root=new node(3);
          root.left=new node(5);
          root.left.left=new node(1);
