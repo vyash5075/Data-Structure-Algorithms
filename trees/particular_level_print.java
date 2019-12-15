@@ -1,5 +1,5 @@
 import java.util.*;
-public class particular_level_print {
+public class Particular_level_print {
     static class node{
         int data;
         node left;
