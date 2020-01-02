@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author yash verma
  */
-public class leafdeletioninbst {
+public class delete_leaf {
    static class node{
     int data;
     node left;
