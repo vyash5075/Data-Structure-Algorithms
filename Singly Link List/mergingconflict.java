@@ -120,7 +120,7 @@ public class mergingconflict {
                System.out.println("no any merging conflict found");
         }
            else{
-                System.out.println(" merging conflict found at node "+status);
+                System.out.println(" merging conflict founded at node "+status);
            }
         
     }
