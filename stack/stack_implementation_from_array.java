@@ -1,36 +1,45 @@
-import java.util.*;
-public class stack_implementation_from_array {
-   
-    public static void delete(int stack[],int top)
+  static int top=-1;
+    public static void pop(int stack[]){
+     if(top==0)
     {
-        int y=top-1;
-        
-        while(y!=-1)
-        {
-            System.out.println(stack[y]+"n ");
-            y--;
-        }
+        System.out.println("Stack is empty");
     }
-    public static void main(String args[])
+    else{
+        top=top-1;
+        System.out.println(stack[top]);
+        //return top;
+    }
+    }
+    public static  void push( int stack[],int item)
     {
+        if(top==stack.length)
+        {
+            System.out.println("stack is full");
+        }
+        {
+            
+        }
+        stack[++top]=item;
+         System.out.println("top element"+stack[top]);
         
+    }
+    public static void main(String args[])        
+    {
         Scanner sc=new Scanner(System.in);
-        System.out.println("enter the no. of entries");
-        int n=sc.nextInt();
-        int top=-1;
-        int q=-1;
-        int stack[]=new int[n];
-        for(int i=0;i<n;i++)
-        {
-           stack[++top]=sc.nextInt();
-           q=top;
-        }
-        System.out.println("elements in the stack are");
-        while(top!=-1)
-        {
-            System.out.println(stack[top]+" ");
-            top--;
-        }
-        delete(stack,q);
+       System.out.println("enter the no. of entries");
+       int n=sc.nextInt();
+       int stack[]=new int[n];
+       push(stack,10);
+       push(stack,20);
+         push(stack,30);
+           push(stack,40);
+      
+       pop( stack);
+       pop(stack);
+       pop(stack);
+       pop(stack);
+       pop(stack); 
+       push(stack,40);
+      
     }
 }
