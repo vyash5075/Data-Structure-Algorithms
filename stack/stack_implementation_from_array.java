@@ -1,4 +1,6 @@
-  static int top=-1;
+   import java.util.*;
+   public class stack_implementation_from_array{
+   static int top=-1;
     public static void pop(int stack[]){
      if(top==0)
     {
