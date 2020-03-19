@@ -1,4 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package trees;
 import java.util.*;
+/**
+ *
+ * @author yash verma
+ */
 public class maxelementinbst {
   static class node{
     int data;
@@ -44,14 +54,26 @@ public class maxelementinbst {
         }
     return root; 
 }   
+  public static int minimum(node root)
+  {
+      int min=root.data;
+      while(root.left!=null)
+      {
+         
+          root=root.left;
+           min=root.data;
+      }
+      return min;
+  }
   public static int maximum(node root)
   {
-      
-      if(root.right!=null)
+      int max=root.data;
+      while(root.right!=null)
       {
-          return maximum(root.right);
+          root=root.right;
+          max=root.data;
       }
-      return root.data;
+      return max;
   }
         public static void main(String args[])
   {
@@ -63,7 +85,9 @@ public class maxelementinbst {
         root=insert(root,78); 
         root=insert(root,21); 
         root=insert(root,87);
-        int max=maximum(root);
+        int min=minimum(root);
+        System.out.println(min);
+         int max=maximum(root);
         System.out.println(max);
    }
 }
