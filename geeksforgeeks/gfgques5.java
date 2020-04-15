@@ -33,6 +33,7 @@ import java.io.*;
 class gfgques5 {
 	public static void main (String[] args) throws IOException {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    int m = Integer.parseInt(br.readLine());
           
         while(m!=0)
         {
