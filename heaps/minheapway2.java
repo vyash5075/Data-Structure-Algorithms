@@ -118,6 +118,7 @@ public void printt()
         m.insert(22);
         m.insert(9);
         m.print();
+	System.out.println();
         System.out.println(m.size);
        // m.minheap();
         m.print();
