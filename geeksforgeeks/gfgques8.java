@@ -22,7 +22,7 @@ Input :
 Output:
 0 0 1 2 2
 0 0 1
-/*package whatever //do not write package name here */
+/*packaged whatever //do not write package name here */
 
 import java.util.*;
 import java.lang.*;
