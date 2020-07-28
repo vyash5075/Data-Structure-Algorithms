@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class deletionbeginning {
     static class node{
         int data;
