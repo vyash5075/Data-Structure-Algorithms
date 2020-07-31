@@ -1,2 +1,2 @@
 # DS-ALGOS
-Data-structure algorithms  using Java
+Data-Structure algorithms  using Java
