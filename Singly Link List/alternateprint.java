@@ -47,7 +47,7 @@ public class alternateprint {
       }
       
       public node alternateprint(alternateprint t1)
-      {System.out.println("alternate print of link list");
+      {
           int sum=0;
            if(t1.head==null)
            {
@@ -59,7 +59,12 @@ public class alternateprint {
                {
                    System.out.println(temp.data);
                    sum=sum+temp.data;
-                   temp=temp.next.next;
+                   temp=temp.next;
+                   
+                           if(temp!=null)
+                           {
+                               temp=temp.next;
+                           }
                }
                System.out.println("sum is "+sum);
            }
