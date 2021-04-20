@@ -60,7 +60,7 @@ public class middleelement {
     }
     public static void midelement(middleelement l1)
     {
-        int count=1;
+        int count=0;
         node p=l1.head;
         while(p!=null)
         {
