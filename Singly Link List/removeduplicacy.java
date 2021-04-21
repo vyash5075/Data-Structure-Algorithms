@@ -98,4 +98,22 @@ public class removeduplicacy {
        
      }
 }
-
+------------------------------------------------------------------------
+    //way 2
+    
+     public static node removeduplicacy(){
+           node next=head;
+           node prev=head;
+           while(next!=null){
+               if(prev.data==next.data){
+                   next=next.next;
+               }
+               else{
+                   prev.next=next;
+                   prev=next;
+                   next=next.next;
+               }
+           }
+           return head;
+           
+       }
