@@ -71,53 +71,23 @@ public class merging {
      
      
      
-     public static node merging(node head1,node head2)
+     public static node merging(node a,node b)
      {
-         node s=null;
-         if(head1==null)
-             return head2;
-         if(head2==null)
-             return head1;
-         
-         if(head1!=null && head2!=null)
-         {
-             if(head1.data<head2.data)
-             {
-                 s=head1;
-                 head1=head1.next;
-             }
-             else
-             {
-                 s=head2;
-                 head2=head2.next;
-             }
-             
-         }
-         head3=s;
-         while(head1!=null &&head2!=null)
-         {
-             if(head1.data<head2.data)
-             {
-                 s.next=head1;
-                  s=head1;
-                  head1=s.next;
-             }
-             else
-             {
-                 s.next=head2;
-                 s=head2;
-                 head2=s.next;
-             }
-         }
-         if(head1==null)
-         {
-             s.next=head2;
-         }
-         if(head2==null)
-         {
-             s.next=head1;
-         }
-         return head3;
+          node temp = new node();
+    node finalList = temp;
+    
+    while(a != null && b != null) {
+      if(a.data < b.data) {
+        temp.next = a;
+        a = a.next;
+      } else {
+        temp.next = b;
+        b = b.next;
+      }
+      temp = temp.next;
+    }
+    temp.next = (a == null) ? b : a;
+    return finalList.next;
      }
      
      
