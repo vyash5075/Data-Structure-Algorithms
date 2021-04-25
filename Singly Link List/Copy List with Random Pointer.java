@@ -61,3 +61,41 @@ class Solution {
         return dummy.next;
     }
 }
+
+
+-------------------------------------------------------------
+    //way 2 by hashmap
+    
+    
+    
+    public static node copyrandomlist(node head){
+      
+        HashMap<node,node>map=new HashMap<>();
+        node curr=head;
+        
+        node nhead=new node(-1);
+        node prev=head;
+        
+        while(curr!=null){
+              node node =new node(curr.data);
+        
+            prev.next=node;
+            map.put(curr,node);
+            
+            prev=prev.next;
+            curr=curr.next;
+            
+        }
+        nhead=nhead.next;
+                node c1=head;
+                node c2=nhead;
+                
+                while(c1!=null){
+                    c2.random=(c2.random!=null?map.get(c1.random):null);
+                    c1=c1.next;
+                    c2=c2.next;
+                }
+                return nhead;
+    }
+    
+  
