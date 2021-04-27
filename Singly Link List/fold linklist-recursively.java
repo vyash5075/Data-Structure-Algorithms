@@ -49,37 +49,14 @@
    }
    
    
+    
    
-   public static node  rev(node head){
-       
-      if(head==null){
-          return head;
-      }
-      if(head.next==null){
-          return head;
-      }
-      node newhead=rev(head.next);
-      head.next.next=head;
-      head.next=null;
-      return newhead;
-   }
-   static node reverse(node head){
-       if(head==null) return head;
-       if(head.next==null) return head;
-       node newnode=reverse(head.next);
-       head.next.next=head;
-       head.next=null;
-       return newnode;
-   }
-   
-   
-   
-   public static node r(node head,int size)
+   public static node fold(node head,int size)
    {
-      return re(head, head,0,4);
+      return folded(head, head,0,4);
    }
    
-   public static node re(node head,node curr,int floor,int size){
+   public static node folded(node head,node curr,int floor,int size){
        
      if(curr==null)return head;
      node result=re(head, curr.next,floor,size);
@@ -108,7 +85,7 @@
             display(llist.head);
               System.out.println( );
               System.out.println("Reversed Linked list:");
-       node llist1 =  r(llist.head,4);
+       node llist1 =  fold(llist.head,4);
          // node llist1 = reverse(llist.head);
               display(llist1);
     }
