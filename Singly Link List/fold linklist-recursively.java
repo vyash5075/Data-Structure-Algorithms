@@ -59,7 +59,7 @@
    public static node folded(node head,node curr,int floor,int size){
        
      if(curr==null)return head;
-     node result=re(head, curr.next,floor,size);
+     node result=folded(head, curr.next,floor,size);
      if(result!=head||curr.next==null){
          if(result!=curr&&result.next!=curr){
              curr.next=result.next;
