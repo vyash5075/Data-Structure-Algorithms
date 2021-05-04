@@ -29,7 +29,7 @@ public class prefixevaluation {
                  
                  String ps1=ps.pop();
                  String ps2=ps.pop();
-                 String pval="("+ps1+ch+ps2+")";
+                 String pval=ps1+ps2+ch;
                  ps.push(pval);
                  
              }else{
