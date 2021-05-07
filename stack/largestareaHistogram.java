@@ -23,7 +23,7 @@ public class largestareahistogram {
         st.push(arr.length-1);
         rb[arr.length-1]=arr.length;
         for(int i=arr.length-2;i>=0;i--){
-            while(st.size()>0&&arr[i]<arr[st.peek()]){
+            while(st.size()>0&&arr[i]<=arr[st.peek()]){
                 st.pop();
             }
             if(st.size()==0){
@@ -39,7 +39,7 @@ public class largestareahistogram {
         
         int lb[]=new int[arr.length];  //next smaller index on the left
        Stack<Integer>st2=new Stack<>();
-       st.push(0);
+       st2.push(0);
        lb[0]=-1;
        for(int i=1;i<arr.length;i++){
           while(st2.size()>0&&arr[i]<arr[st2.peek()])
