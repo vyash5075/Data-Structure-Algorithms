@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package Binary_tree;
+
 import java.util.*;
-public class levelprint {
-  static class node{
+public class diameterofbinarytree {
+   static class node{
         int data;
         node left;
         node right;
@@ -16,22 +17,30 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
+    int diameter;
+
+  public int getDiameter(node node) {
+    if (node == null) {
+      return 0;
+    }
     
+    if(node.left == null && node.right == null) {
+      return 1;
+    }
+
+    int lH = getDiameter(node.left);
+    int rH = getDiameter(node.right);
+     
+    diameter = Math.max(diameter, lH + rH + 1);
+
+    return Math.max(lH, rH) + 1;
+  }
+//way2
+ 
+
+
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+        diameterofbinarytree b=new diameterofbinarytree();
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +48,8 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+        System.out.println("height of tree by iterative way is"+  b.getDiameter(root)+" "+b.diameter);
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
     }
 }
+

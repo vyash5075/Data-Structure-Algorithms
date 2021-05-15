@@ -10,8 +10,8 @@ package Binary_tree;
  * @author yash verma
  */
 import java.util.*;
-public class levelordersum {
- static class node{
+public class postorderwithoutrecursion {
+static class node{
         int data;
         node left;
         node right;
@@ -21,32 +21,32 @@ public class levelordersum {
             this.right=null;
         }
     } 
-    public static void levelordertraversal(node root){
+    public static void postorder(node root){
         if (root==null)return ;
         
-                Queue<node>q=new LinkedList<node>();
-                q.add(root);
+                Stack<node>st=new Stack<>();
+                Stack<node>st2=new Stack<>();
+             st.push(root);
                 
-                while(true){
-                    int size=q.size();
-                    if(size==0){
-                        break;
+                while(st.size()>0){
+                    node top=st.pop();
+                  
+                       if(top.left!=null){
+                        st.add(top.left);
                     }
-                int sum=0;
-                while(size>0){
-                    node top=q.remove();
-                   sum=sum+top.data;
-                    if(top.left!=null){
-                        q.add(top.left);
+                    if(top.right!=null){ 
+                        st.add(top.right);
                     }
-                     if(top.right!=null){
-                        q.add(top.right);
-                    }
-                     size--;    
+                    
+                    st2.push(top);
+                   
+                     
                 }
-                System.out.println(sum);
+                
+                while(st2.size()>0){
+                    node t=st2.pop();
+                    System.out.print(t.data+",");
                 }
-                return;
     }
    
     public static void main(String args[]){
@@ -57,6 +57,6 @@ public class levelordersum {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-       levelordertraversal(root);
+       postorder(root);
     }
 }

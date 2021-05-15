@@ -10,7 +10,7 @@ package Binary_tree;
  * @author yash verma
  */
 import java.util.*;
-public class levelordersum {
+public class reverselevelorderwithoutrecursion {
  static class node{
         int data;
         node left;
@@ -23,30 +23,27 @@ public class levelordersum {
     } 
     public static void levelordertraversal(node root){
         if (root==null)return ;
-        
+        Stack<Integer>st=new Stack<>();
                 Queue<node>q=new LinkedList<node>();
                 q.add(root);
                 
-                while(true){
-                    int size=q.size();
-                    if(size==0){
-                        break;
-                    }
-                int sum=0;
-                while(size>0){
+                while(q.size()>0){
                     node top=q.remove();
-                   sum=sum+top.data;
+                    st.push(top.data);
+                    System.out.println();
+                    if(top.right!=null){
+                        q.add(top.right);
+                    }
                     if(top.left!=null){
                         q.add(top.left);
                     }
-                     if(top.right!=null){
-                        q.add(top.right);
-                    }
-                     size--;    
+                     
                 }
-                System.out.println(sum);
+                
+                
+                while(st.size()>0){
+                    System.out.println(st.pop() +" ");
                 }
-                return;
     }
    
     public static void main(String args[]){

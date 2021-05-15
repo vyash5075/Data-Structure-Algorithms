@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Binary_tree;
+
 import java.util.*;
-public class levelprint {
+public class root_leaf_path_match {
   static class node{
         int data;
         node left;
@@ -16,22 +17,31 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
     
+int depthdeepestoddlevel;
+  public boolean  checksequencematchornot(node node,int sequence[],int index) {
+   if (node == null) {
+      return false;
+    }
+
+    if (index >= sequence.length || node.data != sequence[index]) {
+      return false;
+    }
+
+    if (node.left == null && node.right == null && index == sequence.length - 1) {
+      return true;
+    }
+
+    return checksequencematchornot(node.left, sequence, index + 1)
+        || checksequencematchornot(node.right, sequence, index + 1);
+  }
+  
+  
+  
+
+
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+        root_leaf_path_match b=new root_leaf_path_match();
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +49,12 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+         int sequence[]={10,5,11};
+      System.out.println(b.checksequencematchornot(root,sequence,0));
+   
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
     }
-}
+}    
+
+
+

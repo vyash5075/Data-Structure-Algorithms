@@ -6,8 +6,8 @@
 package Binary_tree;
 
 import java.util.*;
-public class widthoflevel {
- static class node{
+public class maxwidth {
+static class node{
         int data;
         node left;
         node right;
@@ -16,28 +16,23 @@ public class widthoflevel {
             this.left=null;
             this.right=null;
         }
-    }
- 
- //way1
-   public static void elementsbetweenlevel(node root,int level){
-       if(root==null)return;
-       
+    } 
+   public static int elementsbetweenlevel(node root){
+       if(root==null)return 0;
+       int max=0;
        Queue<node>q=new LinkedList<>();
-       int l=1;
+      
        q.add(root);
        while(true){
            int size=q.size();
-           if(l==level){
-               System.out.println(size);
-           }
-           if(size==0||l>level){
+           max=size>max?size:max;
+           if(size==0 ){
                break;
            }
            
            
            while(size>0){
                node temp=q.remove();
-               
                if(temp.left!=null){
                    q.add(temp.left);
                }
@@ -46,18 +41,9 @@ public class widthoflevel {
                }
                size--;
            }
-           l++;
+            
        }
-   }
-   
-   
-   //way2
-   public static int getwidthoflevel(node root,int level){
-       if(root==null){
-           return 0;
-       }
-       if(level==1)return 1 ;
-       return  getwidthoflevel(root.left,level-1)+getwidthoflevel(root.right,level-1);
+       return max;
    }
 
     public static void main(String args[]){
@@ -68,7 +54,6 @@ public class widthoflevel {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-       elementsbetweenlevel(root,2);
-       System.out.println(getwidthoflevel(root,2));
+      System.out.println(elementsbetweenlevel(root));
     }
 }

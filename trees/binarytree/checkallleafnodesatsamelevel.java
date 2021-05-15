@@ -5,7 +5,7 @@
  */
 package Binary_tree;
 import java.util.*;
-public class levelprint {
+public class checkallleafnodesatsamelevel {
   static class node{
         int data;
         node left;
@@ -16,22 +16,33 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
+   int levelOfLeaf;
+
+
+  public boolean  ifLeavesAtSameLevel(node node,int level) {
+   if (node == null) {
+      return true;
+    }
+
+    if (node.left == null && node.right == null) {
+      if (levelOfLeaf == 0) {
+        levelOfLeaf = level;
+        return true;
       }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
+
+      return levelOfLeaf == level;
+    }
+
+    return ifLeavesAtSameLevel(node.left, level + 1) && ifLeavesAtSameLevel(node.right, level + 1);
+   
   }
-    
+  
+  
+  
+
+
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+        checkallleafnodesatsamelevel b=new checkallleafnodesatsamelevel();
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +50,10 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+         
+       System.out.println(b.ifLeavesAtSameLevel (root,1));
+       
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
     }
-}
+}   
+

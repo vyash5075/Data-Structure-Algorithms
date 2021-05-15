@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package Binary_tree;
-import java.util.*;
-public class levelprint {
-  static class node{
+
+/**
+ *
+ * @author yash verma
+ */
+public class Average {
+    static class node{
         int data;
         node left;
         node right;
@@ -16,31 +20,33 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
+    int sum;
+  int count;
+  
+  public void getAverage(node node) {
+    if (node == null) {
+      return;
+    }
+    
+    sum = sum + node.data;
+    count = count + 1;
+
+    getAverage(node.left);
+    getAverage(node.right);
   }
     
-    public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
-        node root=new node(10);
+     public static void main(String args[]){
+        Average b=new Average();
+         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
         root.left.left=new node(11);
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+          
+        b.getAverage(root);
+    System.out.println(b.sum / b.count);
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
-    }
+    } 
 }

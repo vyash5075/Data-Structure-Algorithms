@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package Binary_tree;
-import java.util.*;
-public class implementation {
-    static class node{
+
+/**
+ *
+ * @author yash verma
+ */
+public class mirrorimage {
+     static class node{
         int data;
         node left;
         node right;
@@ -47,6 +51,16 @@ public class implementation {
         System.out.print(root.data+"->");
     }
     
+    public static node mirrorimage(node root){
+        if(root==null)return null;
+        node t=root.left;
+        root.left=root.right;
+        root.right=t;
+        mirrorimage(root.left);
+        mirrorimage(root.right);
+        return root;
+    }
+    
     public static void main(String args[]){
         node root=new node(10);
         root.left=new node(5);
@@ -55,13 +69,10 @@ public class implementation {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-          System.out.println("preorder");
-          preorder(root);
-          System.out.println();
+         mirrorimage(root);
             System.out.println("inorder");
             inorder(root);   System.out.println();
-        System.out.println("postorder");
-        postorder(root);
+        
         
     }
 }

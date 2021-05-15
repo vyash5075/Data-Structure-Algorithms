@@ -5,55 +5,48 @@
  */
 package Binary_tree;
 import java.util.*;
-
-
-public class topview {
-   static class node{
+public class elementsbetweentwolevels {
+  static class node{
         int data;
         node left;
         node right;
-        int height;
         node(int d){
             this.data=d;
             this.left=null;
             this.right=null;
-            
         }
-    }
-    
-   
-   public static void topview(node root){
+    } 
+   public static void elementsbetweenlevel(node root, int min, int max){
        if(root==null)return;
        
-       
-       
-       TreeMap<Integer,Integer>m=new TreeMap<Integer,Integer>();
-       Queue<node>q=new LinkedList<node>();
+       Queue<node>q=new LinkedList<>();
+       int l=1;
        q.add(root);
-       while(!q.isEmpty()){
-           node temp=q.remove();
-           int hd=temp.height;
-           if(m.get(hd)==null){
-               m.put(hd,temp.data);
+       while(true){
+           int size=q.size();
+           if(size==0||l>max){
+               break;
            }
            
-           if(temp.left!=null){
-               temp.left.height=hd-1;
-               q.add(temp.left);
-           }
-            if(temp.right!=null){
-               temp.right.height=hd+1;
-               q.add(temp.right);
-           }
            
+           while(size>0){
+               node temp=q.remove();
+               if(l>=min&&l<=max){
+                   System.out.println(temp.data);
+                   
+               }
+               if(temp.left!=null){
+                   q.add(temp.left);
+               }
+               if(temp.right!=null){
+                   q.add(temp.right);
+               }
+               size--;
+           }
+           l++;
        }
-       
-       System.out.println(m.values());
    }
-    
-   
-    
-   
+
     public static void main(String args[]){
         node root=new node(10);
         root.left=new node(5);
@@ -62,6 +55,6 @@ public class topview {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-       topview(root);
+       elementsbetweenlevel(root,2,3);
     }
 }

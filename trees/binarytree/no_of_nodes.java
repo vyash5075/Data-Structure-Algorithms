@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 package Binary_tree;
-import java.util.*;
-public class levelprint {
-  static class node{
+
+/**
+ *
+ * @author yash verma
+ */
+public class no_of_nodes {
+   static class node{
         int data;
         node left;
         node right;
@@ -16,22 +20,13 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
     
+  
+  public static int total_no_of_nodes(node root ){
+      if(root==null)return 0;
+      return 1+total_no_of_nodes(root.left)+total_no_of_nodes(root.right);
+  }
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +34,7 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-        
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
+       
+        System.out.println("total no of nodes"+total_no_of_nodes(root));
     }
 }

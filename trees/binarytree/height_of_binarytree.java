@@ -5,7 +5,8 @@
  */
 package Binary_tree;
 import java.util.*;
-public class levelprint {
+
+public class height_of_binarytree {
   static class node{
         int data;
         node left;
@@ -16,22 +17,26 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
+   
+public static int heightofbinarytree(node root){
     
+    if(root==null)return -1;
+    return Math.max(heightofbinarytree(root.left),heightofbinarytree(root.right))+1;
+}
+//way2
+
+public static int heightofbinarytree1(node root){
+    
+    if(root==null)return -1;
+    int count1=heightofbinarytree1(root.left);
+    count1++;
+    int count2=heightofbinarytree1(root.right);
+    count2++;
+    return  (count1>count2?count1:count2);
+}
+
+
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +44,8 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+         System.out.println("height of tree by way1  is "+ heightofbinarytree(root));
+        System.out.println("height of tree by way2 is"+ heightofbinarytree1(root));
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
     }
 }

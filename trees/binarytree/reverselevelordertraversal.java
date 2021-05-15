@@ -9,8 +9,7 @@ package Binary_tree;
  *
  * @author yash verma
  */
-import java.util.*;
-public class levelordersum {
+public class reverselevelordertraversal {
  static class node{
         int data;
         node left;
@@ -23,32 +22,26 @@ public class levelordersum {
     } 
     public static void levelordertraversal(node root){
         if (root==null)return ;
-        
-                Queue<node>q=new LinkedList<node>();
-                q.add(root);
-                
-                while(true){
-                    int size=q.size();
-                    if(size==0){
-                        break;
-                    }
-                int sum=0;
-                while(size>0){
-                    node top=q.remove();
-                   sum=sum+top.data;
-                    if(top.left!=null){
-                        q.add(top.left);
-                    }
-                     if(top.right!=null){
-                        q.add(top.right);
-                    }
-                     size--;    
+                int height=heightofbinarytree(root);
+                for(int i=height;i>=0;i--){
+                    printlevel(root,i+1);
+                    System.out.println();
                 }
-                System.out.println(sum);
-                }
-                return;
     }
-   
+    public static void printlevel(node root,int level){
+        if (level==0)return;
+    if(level==1){
+        System.out.print(root.data+" ");
+    }
+    printlevel(root.left,level-1);
+    printlevel(root.right,level-1);
+    
+    }
+public static int heightofbinarytree(node root){
+    
+    if(root==null)return -1;
+    return Math.max(heightofbinarytree(root.left),heightofbinarytree(root.right))+1;
+}
     public static void main(String args[]){
         node root=new node(10);
         root.left=new node(5);

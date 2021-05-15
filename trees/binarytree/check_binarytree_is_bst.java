@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package Binary_tree;
+
 import java.util.*;
-public class levelprint {
-  static class node{
+public class check_binarytree_is_bst {
+      static class node{
         int data;
         node left;
         node right;
@@ -16,23 +17,29 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
       
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
+      node prev = null;
+
+  public boolean isTreeBST(node node) {
+    if (node == null) {
+      return true;
+    }
+
+    if (!isTreeBST(node.left)) {
+      return false;
+    }
+
+    if (prev != null && node.data < prev.data) {
+      return false;
+    }
+
+    prev = node;
     
-    public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
-        node root=new node(10);
+    return isTreeBST(node.right);
+  }
+      public static void main(String args[]){
+      check_binarytree_is_bst b=new check_binarytree_is_bst();
+         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
         root.left.left=new node(11);
@@ -40,7 +47,7 @@ public class levelprint {
         root.right.left=new node(13);
         root.right.right=new node(14);
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
+    System.out.println(b.isTreeBST(root));
+     
     }
 }

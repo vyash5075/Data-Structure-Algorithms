@@ -5,8 +5,8 @@
  */
 package Binary_tree;
 import java.util.*;
-public class levelprint {
-  static class node{
+public class parentof_node {
+ static class node{
         int data;
         node left;
         node right;
@@ -16,22 +16,28 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
     
+int depthdeepestoddlevel;
+ 
+  
+  
+    public node  getparent(node node,int val) {
+    if(node==null||node.data==val){
+        return null;
+    }
+    if((node.left!=null&&node.left.data==val)||(node.right!=null&&node.right.data==val)){
+        return node;
+    }
+    node l=getparent(node.left,val);
+    if(l!=null)return l;
+    l=getparent(node.right,val);
+    return l;
+}
+  
+
+
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+        parentof_node b=new parentof_node();
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +45,17 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+       
+                node parent= b.getparent(root,11);
+     if(parent!=null){
+         System.out.println(parent.data);
+     }
+     else{
+         System.out.println("null");
+     }
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
     }
-}
+}    
+
+
+

@@ -4,9 +4,14 @@
  * and open the template in the editor.
  */
 package Binary_tree;
+
+/**
+ *
+ * @author yash verma
+ */
 import java.util.*;
-public class implementation {
-    static class node{
+public class inordertraversalwithoutrecursion {
+   static class node{
         int data;
         node left;
         node right;
@@ -21,32 +26,30 @@ public class implementation {
         if(root==null){
             return;
         }
-        inorder(root.left);
-        System.out.print(root.data+"->");
-        inorder(root.right);
-    }
-    
-    public static void preorder(node root){
-        if(root==null){
-            return;
+        Stack<node>st=new Stack<>();
+        while(root!=null){
+            st.push(root);
+            root=root.left;
+        }
+        while(st.size()>0){
+            node t=st.pop();
+            System.out.print(t.data+"->");
+            if(t.right!=null){
+                node temp=t.right;
+                while(temp!= null){
+                    st.push(temp);
+                    temp=temp.left;
+                }
+            }
         }
         
-         System.out.print (root.data+"->");
-        preorder(root.left);
-       
-        preorder(root.right);
+//        inorder(root.left);
+//        System.out.print(root.data+"->");
+//        inorder(root.right);
     }
     
-    public static void postorder(node root){
-        if(root==null){
-            return;
-        }
-        postorder(root.left);
-        
-        postorder(root.right);
-        System.out.print(root.data+"->");
-    }
-    
+     
+   
     public static void main(String args[]){
         node root=new node(10);
         root.left=new node(5);
@@ -55,13 +58,11 @@ public class implementation {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-          System.out.println("preorder");
-          preorder(root);
-          System.out.println();
+          
             System.out.println("inorder");
             inorder(root);   System.out.println();
-        System.out.println("postorder");
-        postorder(root);
+     
         
     }
 }
+

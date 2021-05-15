@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Binary_tree;
-import java.util.*;
-public class levelprint {
+
+
+public class deletetree {
   static class node{
         int data;
         node left;
@@ -16,22 +17,31 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
     
+    
+    
+    
+    
+    public static void postorder(node root){
+        if(root==null){
+            return;
+        }
+        postorder(root.left);
+        
+        postorder(root.right);
+        System.out.print(root.data+"->");
+    }
+    
+    public static node deletetree(node root){
+        if(root==null)return null;
+        
+        deletetree(root.left);
+         deletetree(root.right);
+        System.out.println("deleting"+root.data);
+        root=null;
+        return root;
+    }
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +49,11 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+          
+           root=  deletetree(root);
+        System.out.println("postorder");
+        postorder(root);
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
     }
 }
+

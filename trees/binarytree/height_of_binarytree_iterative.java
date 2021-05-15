@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Binary_tree;
+
 import java.util.*;
-public class levelprint {
+public class height_of_binarytree_iterative {
   static class node{
         int data;
         node left;
@@ -16,22 +17,37 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
+   
+public static int heightiteratively(node root){
     
+    if(root==null)return -1;
+   Queue<node>q=new LinkedList<>();
+   q.add(root);
+   int height=0;
+   while(true){
+       int size=q.size();
+       if(size==0){
+           break;
+       }
+       
+       while(size>0){
+           node t=q.remove();
+           if(t.left!=null){
+              q.add(t.left);
+           }
+           if(t.right!=null){
+               q.add(t.right);
+           }
+           size--;
+       }height=height+1;
+   }
+   return height-1;
+}
+//way2
+ 
+
+
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +55,7 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+        System.out.println("height of tree by iterative way is"+  heightiteratively(root));
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
     }
 }

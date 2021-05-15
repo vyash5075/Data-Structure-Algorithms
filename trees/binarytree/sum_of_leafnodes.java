@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 package Binary_tree;
-import java.util.*;
-public class levelprint {
+
+/**
+ *
+ * @author yash verma
+ */
+public class sum_of_leafnodes {
   static class node{
         int data;
         node left;
@@ -16,22 +20,29 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
+   static int maxsum;
+
+   
+  
+  
+  public static void leafnodesum(node root){
+      if(root==null){
+          return;
       }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
+       if(root.left==null&&root.right==null){
+           maxsum+=root.data;
+       }
+      leafnodesum(root.left);
+      leafnodesum(root.right);
       
   }
-    
+  
+  
+ 
+
+
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+        sum_of_leafnodes b=new sum_of_leafnodes();
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -39,8 +50,10 @@ public class levelprint {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
+        leafnodesum(root);
+        System.out.println(maxsum);
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
+        
     }
-}
+}   
+

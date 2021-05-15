@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Binary_tree;
-import java.util.*;
-public class levelprint {
+
+ 
+ class checkmirrorstructure {
   static class node{
         int data;
         node left;
@@ -16,22 +17,16 @@ public class levelprint {
             this.right=null;
         }
     }
-  public static void levelprint(node root,int level){
-      
-      
-      if(root==null)return;
-      
-      if(level==1){
-          System.out.println(root.data);
-      }
-      
-      levelprint(root.left,level-1);
-      levelprint(root.right,level-1);
-      
-  }
     
+  public static boolean checkmirrorstructure(node root1,node root2){
+      
+      if(root1==null&&root2==null)return true;
+      if(root1==null||root2==null)return false;
+      return  checkmirrorstructure(root1.left,root2.right)&&checkmirrorstructure(root1.right,root2.left);
+  }
+     
+  
     public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
         node root=new node(10);
         root.left=new node(5);
         root.right=new node(2);
@@ -40,7 +35,16 @@ public class levelprint {
         root.right.left=new node(13);
         root.right.right=new node(14);
         
-        System.out.println("enter the level to print its elements");
-        levelprint(root,sc.nextInt());
+          node root2=new node(10);
+        root2.left=new node(2);
+        root2.right=new node(5);
+        root2.left.left=new node(14);
+        root2.left.right=new node(13);
+        root2.right.left=new node(12);
+        root2.right.right=new node(11);
+        System.out.println(checkmirrorstructure(root,root2));
+        
+        
+        
     }
 }

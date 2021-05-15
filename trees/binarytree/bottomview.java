@@ -25,7 +25,7 @@ public class bottomview {
     }
     
    
-   public static void bottomview(node root){
+   public static void topview(node root){
        if(root==null)return;
        
        
@@ -65,6 +65,6 @@ public class bottomview {
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-      bottomview(root);
+       topview(root);
     }
 }
