@@ -61,6 +61,6 @@ public class sumofallnodes {
         root.right.right=new node(14);
         
         System.out.println("sum of all nodes"+ sumofallnodes(root));
-        System.out.println("sum of odd even nodes"+getdifferencce_even_odd_nodes(root));
+        System.out.println("difference of values at odd and even level is"+getdifferencce_even_odd_nodes(root));
     }
 }
