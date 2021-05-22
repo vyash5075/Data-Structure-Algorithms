@@ -30,7 +30,7 @@ return checkmirrorstructure(root.left,root.right);
       
       if(root1==null&&root2==null)return true;
       if(root1==null||root2==null)return false;
-      return  checkmirrorstructure(root1.left,root2.left)&&checkmirrorstructure(root1.right,root2.right);
+      return  checkmirrorstructure(root1.left,root2.right)&&checkmirrorstructure(root1.right,root2.left);
   }
      
   
@@ -42,15 +42,6 @@ return checkmirrorstructure(root.left,root.right);
         root.left.right=new node(12);
         root.right.left=new node(13);
         root.right.right=new node(14);
-        
-          node root2=new node(10);
-        root2.left=new node(2);
-        root2.right=new node(5);
-        root2.left.left=new node(14);
-        root2.left.right=new node(13);
-        root2.right.left=new node(12);
-        root2.right.right=new node(11);
-           root2.right.right.right=new node(11);
         System.out.println(checkfoldable(root));
         
         
