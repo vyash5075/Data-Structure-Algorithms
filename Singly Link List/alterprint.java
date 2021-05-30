@@ -15,7 +15,7 @@ public class alterprint {
         node temp=new node(data);
         if(head==null)
         {
-            head=temp;
+            head=temp ;
         }
         else{
             node p=head;
